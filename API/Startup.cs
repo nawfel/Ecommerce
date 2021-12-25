@@ -5,7 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-
+using Core.Iterfaces;
+using Infrastructure.Data;
 namespace API
 {
     public class Startup
@@ -21,6 +22,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
 
+        services.AddScoped<IProductRepository,ProductRepository>();
             services.AddControllers();
             services.AddDbContext<Infrastructure.Data.StoreContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConntection")));
             services.AddSwaggerGen(c =>
