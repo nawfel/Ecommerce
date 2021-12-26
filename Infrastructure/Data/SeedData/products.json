@@ -114,7 +114,7 @@
   {
     "Name": "Core Red Boots",
     "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 189.99,
+    "Price": 181,
     "PicutreUrl": "images/products/boot-core2.png",
     "ProductTypeId": 3,
     "ProductBrandId": 2
@@ -122,7 +122,7 @@
   {
     "Name": "Core Purple Boots",
     "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 199.99,
+    "Price": 190,
     "PicutreUrl": "images/products/boot-core1.png",
     "ProductTypeId": 3,
     "ProductBrandId": 2
