@@ -7,6 +7,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Core.Iterfaces;
 using Infrastructure.Data;
+using API.Helpers;
+
 namespace API
 {
     public class Startup
@@ -22,9 +24,11 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
 
-        services.AddScoped<IProductRepository,ProductRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(Infrastructure.Data.GenericRepository<>));
             services.AddControllers();
             services.AddDbContext<Infrastructure.Data.StoreContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConntection")));
+            services.AddAutoMapper(typeof(MappingProfiles));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
@@ -44,7 +48,7 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            app.UseStaticFiles();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
