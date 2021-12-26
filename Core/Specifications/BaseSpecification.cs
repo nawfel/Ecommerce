@@ -8,7 +8,7 @@ namespace Core.Specifications
     {
         public BaseSpecification()
         {
-            
+
         }
         public BaseSpecification(Expression<Func<T, bool>> criteria)
         {
@@ -19,9 +19,22 @@ namespace Core.Specifications
 
         public List<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
 
+        public Expression<Func<T, object>> OrderBy { get; private set; }
+
+        public Expression<Func<T, object>> OrderByDesc { get; private set; }
+
         protected void AddInclude(Expression<Func<T, Object>> includeExpression)
         {
             Includes.Add(includeExpression);
+        }
+
+        protected void AddOrderby(Expression<Func<T, Object>> orderByExpression)
+        {
+            OrderBy = orderByExpression;
+        }
+        protected void AddOrderbyDesc(Expression<Func<T, Object>> orderByDescExpression)
+        {
+            OrderByDesc = orderByDescExpression;
         }
 
     }
