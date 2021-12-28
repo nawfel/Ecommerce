@@ -9,8 +9,10 @@ namespace API.Extensions
 {
     public static class ApplicationServicesExtions
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services){
-             services.AddScoped<IProductRepository, ProductRepository>();
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        {
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IBasketRepository, BasketRepository>();
             services.AddScoped(typeof(IGenericRepository<>), typeof(Infrastructure.Data.GenericRepository<>));
             services.Configure<ApiBehaviorOptions>(options =>
             {
