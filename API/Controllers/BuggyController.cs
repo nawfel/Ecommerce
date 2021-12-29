@@ -1,5 +1,6 @@
 using API.Error;
 using Infrastructure.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -14,6 +15,11 @@ namespace API.Controllers
 
 
 
+        [HttpGet("testauth")]
+        [Authorize]
+        public ActionResult<string> GetSecretText(){
+            return "secret";
+        }
         [HttpGet("notfound")]
         public ActionResult GetNotFoundRequest()
         {
@@ -27,7 +33,7 @@ namespace API.Controllers
         [HttpGet("servererror")]
         public ActionResult GetServerError()
         {
-            var thing = _context.Products.Find(454);
+            var thing = "dsf"; //_context.Products.Find(454);
             var thingToReturn = thing.ToString();
 
 
