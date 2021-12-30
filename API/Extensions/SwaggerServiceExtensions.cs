@@ -11,6 +11,25 @@ namespace API.Extensions
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebAPIv5", Version = "v1" });
+                var secSchema = new OpenApiSecurityScheme
+                {
+                    Description = " JWT Auth Bearer Scheme",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "bearer",
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                };
+                c.AddSecurityDefinition("Bearer", secSchema);
+                var secRequirement = new OpenApiSecurityRequirement{
+                    {secSchema,new []{"Bearer"}}
+                };
+                c.AddSecurityRequirement(secRequirement);
+
             });
             return services;
         }

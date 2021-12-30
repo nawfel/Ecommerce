@@ -12,6 +12,9 @@ import { CheckoutRoutingModule } from './checkout-routing.module';
   imports: [
     CommonModule,
     CheckoutRoutingModule
+  ],
+  bootstrap :[
+    CheckoutComponent
   ]
 })
 export class CheckoutModule { }
