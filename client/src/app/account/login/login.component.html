@@ -1,0 +1,46 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <div class="avatar"></div>
+    </div>
+    <div class="flex-column flex-md-row align-items-center justify-content-center">
+      <!-- Login Form -->
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input formControlName="email" type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+        <span class="text-danger"
+          *ngIf="loginForm.get('email').invalid &&loginForm.get('email').touched && loginForm.get('email').errors['required']">
+          Email adress is required</span>
+        <span class="text-danger"
+          *ngIf="loginForm.get('email').invalid &&loginForm.get('email').touched && loginForm.get('email').errors['pattern']">
+          Email adress is not valid</span>
+        <input formControlName="password" type="password" id="password" class="fadeIn third" name="login"
+          placeholder="password">
+        <span class="text-danger"
+          *ngIf="loginForm.get('password').invalid &&loginForm.get('password').touched && loginForm.get('password').errors['required']">
+          password adress is required</span>
+        <input [disabled]="loginForm.invalid" type="submit" class="fadeIn fourth" value="Log In">
+      </form>
+
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">Forgot Password?</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-4">
+    <p>Form staus : {{loginForm.status}}</p>
+    <p>Email staus : {{loginForm.get('email').status}}</p>
+    <p>Email staus : {{loginForm.get('email').touched}}</p>
+    <p>Email staus : {{loginForm.get('email').dirty}}</p>
+    <pre>{{loginForm.value | json}}</pre>
+  </div>
+</div>
