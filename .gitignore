@@ -1,3 +1,5 @@
+Ecommerce/.vs/*
+node_modules/
 obj
 bin
 appsettings.json

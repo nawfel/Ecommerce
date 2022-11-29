@@ -76,7 +76,7 @@
             "browserTarget": "client:build",
             "sslKey": "SSL/server.key",
             "sslCert": "SSL/server.crt",
-            "ssl": true
+            "ssl": false
           },
           "configurations": {
             "production": {
